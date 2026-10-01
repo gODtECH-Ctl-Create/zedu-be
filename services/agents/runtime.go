@@ -309,7 +309,8 @@ func (t *searchOrganisationMembersTool) Execute(ctx ToolExecutionContext, argume
 		return nil, errors.New("organisation not found")
 	}
 
-	members, err := models.OrgUserManagement{}.SearchUsersInOrganisation(ctx.DB, ctx.OrgID, query)
+	var orgUserManagement models.OrgUserManagement
+	members, err := orgUserManagement.SearchUsersInOrganisation(ctx.DB, ctx.OrgID, query)
 	if err != nil {
 		return nil, err
 	}
